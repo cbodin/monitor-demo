@@ -32,10 +32,10 @@
     <script>
     const targetRight = 920;
     let cover;
-    let offset = 4;
+    let offset = 8;
 
     function frame() {
-        const windowOffset = window.screen.width - window.screenLeft - window.innerWidth;
+        const windowOffset = window.screen.width - window.screenX - window.innerWidth;
         cover.style.right = `${targetRight - windowOffset - offset}px`;
         requestAnimationFrame(frame);
     }
@@ -43,8 +43,8 @@
     function step() {
         offset -= 1;
 
-        if (offset < -4) {
-            offset = 4;
+        if (offset < -8) {
+            offset = 8;
         }
     }
 
