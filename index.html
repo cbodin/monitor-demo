@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf8">
+    <style>
+    .cover {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        background: #000;
+    }
+
+    .text {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translate(50%, -100%);
+        padding: 10px;
+        background: #fff;
+        color: #000;
+        text-align: center;
+    }
+
+    .text--black {
+        background: #000;
+        color: #fff;
+        transform: translate(50%, 0);
+    }
+    </style>
+    <script>
+    const targetRight = 917;
+    let cover;
+    let offset = 5;
+
+    function frame() {
+        const windowOffset = window.screen.width - window.screenLeft - window.innerWidth;
+        cover.style.right = `${targetRight - windowOffset - offset}px`;
+        requestAnimationFrame(frame);
+    }
+
+    setInterval(() => {
+        offset -= 1;
+
+        if (offset < -5) {
+            offset = 5;
+        }
+    }, 1000);
+
+    document.addEventListener('DOMContentLoaded', () => {
+        cover = document.querySelector('.cover');
+        requestAnimationFrame(frame);
+    });
+    </script>
+</head>
+<body>
+<div class="cover">
+    <div class="text text--white">
+        Lorem ipsum dolor sit amet,<br>
+        consectetur adipiscing elit
+    </div>
+    <div class="text text--black">
+        Sed ut perspiciatis unde omnis<br>
+        iste natus error sit
+    </div>
+</div>
+</body>
+</html>
